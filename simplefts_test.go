@@ -1,4 +1,6 @@
-// Copied from https://github.com/akrylysov/simplefts/blob/master/index_test.go
+// Simple Full-Text Search engine
+// Copied/Modified from https://github.com/akrylysov/simplefts
+// LICENSE: https://github.com/akrylysov/simplefts/blob/master/LICENSE
 
 package main
 
@@ -9,22 +11,22 @@ import (
 )
 
 func TestIndex(t *testing.T) {
-	idx := make(index)
+	idx := make(Index)
 
-	assert.Nil(t, idx.search("foo"))
-	assert.Nil(t, idx.search("donut"))
+	assert.Nil(t, idx.Search("foo"))
+	assert.Nil(t, idx.Search("donut"))
 
-	idx.add([]Document{{ID: 1, Text: "A donut on a glass plate. Only the donuts."}})
-	assert.Nil(t, idx.search("a"))
-	assert.Equal(t, idx.search("donut"), []int{1})
-	assert.Equal(t, idx.search("DoNuts"), []int{1})
-	assert.Equal(t, idx.search("glass"), []int{1})
+	idx.Add([]document{{ID: 1, Text: "A donut on a glass plate. Only the donuts."}})
+	assert.Nil(t, idx.Search("a"))
+	assert.Equal(t, idx.Search("donut"), []int{1})
+	assert.Equal(t, idx.Search("DoNuts"), []int{1})
+	assert.Equal(t, idx.Search("glass"), []int{1})
 
-	idx.add([]Document{{ID: 2, Text: "donut is a donut"}})
-	assert.Nil(t, idx.search("a"))
-	assert.Equal(t, idx.search("donut"), []int{1, 2})
-	assert.Equal(t, idx.search("DoNuts"), []int{1, 2})
-	assert.Equal(t, idx.search("glass"), []int{1})
+	idx.Add([]document{{ID: 2, Text: "donut is a donut"}})
+	assert.Nil(t, idx.Search("a"))
+	assert.Equal(t, idx.Search("donut"), []int{1, 2})
+	assert.Equal(t, idx.Search("DoNuts"), []int{1, 2})
+	assert.Equal(t, idx.Search("glass"), []int{1})
 }
 
 func TestTokenizer(t *testing.T) {
@@ -48,7 +50,7 @@ func TestTokenizer(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(tc.text, func(st *testing.T) {
-			assert.EqualValues(st, tc.tokens, tokenize(tc.text))
+			assert.EqualValues(st, tc.tokens, Tokenize(tc.text))
 		})
 	}
 }
@@ -58,7 +60,7 @@ func TestLowercaseFilter(t *testing.T) {
 		in  = []string{"Cat", "DOG", "fish"}
 		out = []string{"cat", "dog", "fish"}
 	)
-	assert.Equal(t, out, lowercaseFilter(in))
+	assert.Equal(t, out, LowercaseFilter(in))
 }
 
 func TestStopwordFilter(t *testing.T) {
@@ -66,7 +68,7 @@ func TestStopwordFilter(t *testing.T) {
 		in  = []string{"i", "am", "the", "cat"}
 		out = []string{"am", "cat"}
 	)
-	assert.Equal(t, out, stopwordFilter(in))
+	assert.Equal(t, out, StopwordFilter(in))
 }
 
 func TestStemmerFilter(t *testing.T) {
@@ -74,5 +76,5 @@ func TestStemmerFilter(t *testing.T) {
 		in  = []string{"cat", "cats", "fish", "fishing", "fished", "airline"}
 		out = []string{"cat", "cat", "fish", "fish", "fish", "airlin"}
 	)
-	assert.Equal(t, out, stemmerFilter(in))
+	assert.Equal(t, out, StemmerFilter(in))
 }

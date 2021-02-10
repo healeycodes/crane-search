@@ -1,4 +1,4 @@
-package search
+package main
 
 import (
 	"bytes"
@@ -12,9 +12,9 @@ import (
 	"log"
 	"net/http"
 	"syscall/js"
+	"time"
 )
 
-// Main function: it sets up our Wasm application
 func main() {
 	// Define the function "LongTailedDuck" in the JavaScript scope
 	js.Global().Set("LongTailedDuck", LongTailedDuck())
@@ -28,7 +28,7 @@ func LongTailedDuck() js.Func {
 		// Get the URL as argument
 		// args[0] is a js.Value, so we need to get a string out of it
 		indexURL := args[0].String()
-		word := args[1].String()
+		search := args[1].String()
 
 		fmt.Println(indexURL)
 
@@ -75,10 +75,15 @@ func LongTailedDuck() js.Func {
 					log.Fatal(err)
 				}
 
-				matchingDocuments := []Result{}
-				documentInfo := index.Words[word]
-				for documentID, positions := range documentInfo {
-					matchingDocuments = append(matchingDocuments, Result{Document: index.Documents[documentID], Positions: positions})
+				start = time.Now()
+				matchedIDs := index.search(search)
+				log.Printf("Search found %d documents in %v", len(matchedIDs), time.Since(start))
+
+				results := []Result{}
+				for _, id := range matchedIDs {
+					results = append(results, documents[id])
+					doc := docs[id]
+					log.Printf("%d\t%s\n", id, doc.Text)
 				}
 
 				result, err := json.Marshal(matchingDocuments)
