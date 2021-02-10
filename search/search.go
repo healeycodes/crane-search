@@ -1,11 +1,9 @@
-package main
+package search
 
 import (
 	"bytes"
 	"compress/gzip"
-	"crypto/sha1"
 	"encoding/gob"
-	"encoding/hex"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
@@ -113,10 +111,4 @@ func LongTailedDuck() js.Func {
 		promiseConstructor := js.Global().Get("Promise")
 		return promiseConstructor.New(handler)
 	})
-}
-
-func shortHash(s string, size int) string {
-	h := sha1.New()
-	h.Write([]byte(s))
-	return string(hex.EncodeToString(h.Sum(nil))[:size])
 }
