@@ -1,7 +1,8 @@
-package main
+package search
 
 import (
 	"bytes"
+	"compress/gzip"
 	"crypto/sha1"
 	"encoding/gob"
 	"encoding/hex"
@@ -10,26 +11,8 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
-	"strings"
 	"syscall/js"
 )
-
-type Result struct {
-	Document  Document `json:"document"`
-	Positions []int    `json:"positions"`
-}
-
-type Document struct {
-	DocumentID int    `json:"documentId"`
-	Path       string `json:"path"`
-	URL        string `json:"url"`
-	Title      string `json:"title"`
-}
-
-type Index struct {
-	Documents map[int]Document         `json:"documents"`
-	Words     map[string]map[int][]int `json:"words"`
-}
 
 // Main function: it sets up our Wasm application
 func main() {
@@ -44,11 +27,10 @@ func LongTailedDuck() js.Func {
 	return js.FuncOf(func(this js.Value, args []js.Value) interface{} {
 		// Get the URL as argument
 		// args[0] is a js.Value, so we need to get a string out of it
-		basePath := args[0].String()
+		indexURL := args[0].String()
 		word := args[1].String()
 
-		requestURL := basePath + "/" + shortHash(strings.ToLower(word), 2) + ".ltd"
-		fmt.Println(requestURL)
+		fmt.Println(indexURL)
 
 		// Handler for the Promise
 		// We need to return a Promise because HTTP requests are blocking in Go
@@ -59,7 +41,7 @@ func LongTailedDuck() js.Func {
 			// Run this code asynchronously
 			go func() {
 				// Make the HTTP request
-				res, err := http.DefaultClient.Get(requestURL)
+				res, err := http.DefaultClient.Get(indexURL)
 				if err != nil {
 					// Handle errors: reject the Promise if we have an error
 					errorConstructor := js.Global().Get("Error")
@@ -79,8 +61,15 @@ func LongTailedDuck() js.Func {
 					return
 				}
 
-				buf := bytes.NewBuffer(data)
+				// Decompress
+
+				ungzipper, err := gzip.NewReader(res.Body)
+				uncompressed := []byte{}
+				_, err = ungzipper.Read(uncompressed)
+
+				buf := bytes.NewBuffer(uncompressed)
 				dec := gob.NewDecoder(buf)
+
 				index := Index{}
 				if err := dec.Decode(&index); err != nil {
 					log.Fatal(err)

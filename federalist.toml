@@ -89,4 +89,4 @@ files = [
 ]
 
 [output]
-dirname = "federalist"
+filename = "federalist.ltd"
