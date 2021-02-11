@@ -2,7 +2,7 @@
 // Copied/Modified from https://github.com/akrylysov/simplefts
 // LICENSE: https://github.com/akrylysov/simplefts/blob/master/LICENSE
 
-package main
+package lib
 
 import (
 	"testing"

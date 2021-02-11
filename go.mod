@@ -1,4 +1,4 @@
-module github.com/healeycodes/long-tailed-duck
+module github.com/healeycodes/crane-search
 
 go 1.13
 

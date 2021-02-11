@@ -2,7 +2,6 @@ package search
 
 import (
 	"bytes"
-	"compress/gzip"
 	"encoding/gob"
 	"encoding/json"
 	"fmt"
@@ -11,17 +10,19 @@ import (
 	"net/http"
 	"syscall/js"
 	"time"
+
+	lib "github.com/healeycodes/crane-search"
 )
 
 func main() {
-	// Define the function "LongTailedDuck" in the JavaScript scope
-	js.Global().Set("LongTailedDuck", LongTailedDuck())
+	// Define the function "Crane" in the JavaScript scope
+	js.Global().Set("Crane", Crane())
 	// Prevent the function from returning, which is required in a wasm module
 	select {}
 }
 
-// LongTailedDuck fetches an external resource by making a HTTP request from Go
-func LongTailedDuck() js.Func {
+// Crane fetches an external resource by making a HTTP request from Go
+func Crane() js.Func {
 	return js.FuncOf(func(this js.Value, args []js.Value) interface{} {
 		// Get the URL as argument
 		// args[0] is a js.Value, so we need to get a string out of it
@@ -59,32 +60,25 @@ func LongTailedDuck() js.Func {
 					return
 				}
 
-				// Decompress
-
-				ungzipper, err := gzip.NewReader(res.Body)
-				uncompressed := []byte{}
-				_, err = ungzipper.Read(uncompressed)
-
-				buf := bytes.NewBuffer(uncompressed)
+				buf := bytes.NewBuffer(data)
 				dec := gob.NewDecoder(buf)
 
-				index := Index{}
-				if err := dec.Decode(&index); err != nil {
+				store := lib.Store{}
+				if err := dec.Decode(&store); err != nil {
 					log.Fatal(err)
 				}
 
-				start = time.Now()
-				matchedIDs := index.search(search)
+				start := time.Now()
+				matchedIDs := store.Index.Search(search)
 				log.Printf("Search found %d documents in %v", len(matchedIDs), time.Since(start))
 
-				results := []Result{}
+				results := []lib.Result{}
 				for _, id := range matchedIDs {
-					results = append(results, documents[id])
-					doc := docs[id]
-					log.Printf("%d\t%s\n", id, doc.Text)
+					results = append(results, store.Results[id])
+					log.Printf("%s\n", store.Results[id].Title)
 				}
 
-				result, err := json.Marshal(matchingDocuments)
+				result, err := json.Marshal(results)
 				if err != nil {
 					fmt.Println(err)
 					return
