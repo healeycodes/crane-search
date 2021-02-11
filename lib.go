@@ -5,7 +5,6 @@
 package lib
 
 import (
-	"compress/gzip"
 	"encoding/gob"
 	"errors"
 	"io/ioutil"
@@ -195,25 +194,12 @@ func Build() {
 		results = append(results, result)
 	}
 
-	// start = time.Now()
-	// matchedIDs := index.search("the States")
-	// log.Printf("Search found %d documents in %v", len(matchedIDs), time.Since(start))
-
-	// for _, id := range matchedIDs {
-	// 	doc := docs[id]
-	// 	log.Printf("%d\t%s\n", id, doc.Text)
-	// }
-
 	removeIfExists(config.Output.Filename)
 	file, err := os.Create(config.Output.Filename)
 	check(err)
 	defer file.Close()
 
-	gzipper, err := gzip.NewWriterLevel(file, gzip.BestCompression)
-	check(err)
-	defer gzipper.Close()
-
-	encoder := gob.NewEncoder(gzipper)
+	encoder := gob.NewEncoder(file)
 	store := Store{
 		Index:   index,
 		Results: results,

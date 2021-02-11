@@ -1,8 +1,11 @@
-# go-search
+# Crane Search
 
-Some draft notes:
+```bash
+./build-index.sh federalist.toml
+./build-search.sh
+```
 
-- `go run .\build.go .\federalist.toml` then move the created directory to `search/`
-- host everything inside `search/`
-- if any JS errors, check for the correct `wasm_exec.js` version
-
+```bash
+cd demo
+python -m http.server 8000
+```
