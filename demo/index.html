@@ -2,18 +2,19 @@
 	<head>
 		<meta charset="utf-8"/>
 		<script src="wasm_exec.js"></script>
-		<script>
-			const go = new Go();
-			WebAssembly.instantiateStreaming(fetch("search.wasm"), go.importObject).then((result) => {
-				go.run(result.instance);
-			});
-		</script>
+		<script src="crane.js"></script>
 	</head>
 	<body>
 	<input id="crane-search" placeholder="Search!">
 	<div id="crane-results"></div>
 	<script>
-	function search() {
+	const crane = new Crane('crane.wasm', 'federalist.crane');
+	crane.load()
+		.then(() => {
+			r = crane.search('however')
+			console.log(r)
+		})
+	/* function search() {
 		Crane('federalist.crane', this.value)
 			.then(res => res.json())
 			.then(json => {
@@ -26,7 +27,8 @@
 				results.innerHTML = details
 			})
 	}
-	document.querySelector('#crane-search').onkeyup = search
+	document.querySelector('#crane-search').onkeyup = search 
+	*/
 	</script>
 	</body>
 </html>
