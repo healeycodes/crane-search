@@ -1,5 +1,5 @@
 ./build-index.sh federalist.toml
-./build-search.sh
+./build-browser.sh
 mkdir -p dist
 mkdir -p docs
 cp -a ./dist/. ./demo/

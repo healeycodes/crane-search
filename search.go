@@ -19,10 +19,11 @@ type Document struct {
 	ID    int
 }
 
+// Result is a search result item
 type Result struct {
-	Title string `json:"title"`
-	URL   string `json:"url"`
-	ID    int    `json:"id"`
+	Title string
+	URL   string
+	ID    int
 }
 
 // Index is an inverted Index. It maps tokens to document IDs.

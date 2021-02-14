@@ -1,0 +1,58 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Demo page for Crane Search." />
+    <title>Crane Search — Demo</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"
+    />
+    <script src="wasm_exec.js"></script>
+    <script src="crane.js"></script>
+  </head>
+  <body>
+    <div>
+      <input id="crane-search" placeholder="home" onInput="search(this)" />
+      <progress id="crane-load-progress" max="100" value="0"></progress>
+    </div>
+    <div id="crane-results"></div>
+    <script>
+      const craneProgress = document.querySelector("#crane-load-progress");
+      const craneResults = document.querySelector("#crane-results");
+      const crane = new Crane("crane.wasm", "federalist.crane");
+
+      function search(elem) {
+        const results = crane.query(elem.value);
+        let details = "<ol>";
+        results.forEach((result) => {
+          details += `<li><a href="${result.url}">${result.title}</a></li>`;
+        });
+        craneResults.innerHTML = details + "</ol>";
+      }
+
+      const progress = setInterval(() => {
+        craneProgress.value = Math.min(parseInt(craneProgress.value) + 1, 100);
+      }, 17);
+      crane.load().then(() => {
+        clearInterval(progress);
+        craneProgress.value = "100";
+        setTimeout(() => craneProgress.remove(), 400);
+      });
+    </script>
+    <style>
+      * {
+        font-size: 1.2rem;
+      }
+      #crane-load-progress {
+        display: block;
+        width: 400px;
+      }
+      #crane-search {
+        display: block;
+        width: 400px;
+      }
+    </style>
+  </body>
+</html>

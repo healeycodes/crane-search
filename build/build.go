@@ -30,7 +30,8 @@ func main() {
 	build()
 }
 
-// build the index, compresses it, encodes it, and writes it to disk
+// Builds the index and results into a store.
+// Compresses it, encodes it, and writes it to disk
 func build() {
 	if len(os.Args) < 2 {
 		log.Fatalln("Missing index argument")
@@ -57,7 +58,7 @@ func build() {
 	index.Add(documents)
 	log.Printf("Indexed %d documents in %v", len(documents), time.Since(start))
 
-	// Strip text from documents to create results
+	// Strip text from documents to create results (so we don't send the full text)
 	results := []search.Result{}
 	for _, document := range documents {
 		result := search.Result{
@@ -81,6 +82,7 @@ func build() {
 	encoder.Encode(store)
 }
 
+// Given a config, load the items and their metadata.
 func loadDocuments(config config) ([]search.Document, error) {
 	docs := []search.Document{}
 	for id, file := range config.Input.Files {
