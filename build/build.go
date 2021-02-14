@@ -32,6 +32,11 @@ func main() {
 
 // build the index, compresses it, encodes it, and writes it to disk
 func build() {
+	if len(os.Args) < 2 {
+		log.Fatalln("Missing index argument")
+		return
+	}
+
 	configPath := os.Args[1]
 	configToml, err := ioutil.ReadFile(configPath)
 	check(err)

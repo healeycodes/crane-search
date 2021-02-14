@@ -1,26 +1,16 @@
 [input]
 base_directory = "test/essays"
 files = [
-    { path = "essays/essay01.txt", url="essays/essay01.txt", title="essay01.txt" },
-    { path = "essays/essay02.txt", url="essays/essay02.txt", title="essay02.txt" },
-    { path = "essays/essay03.txt", url="essays/essay03.txt", title="essay03.txt" },
-    { path = "essays/essay04.txt", url="essays/essay04.txt", title="essay04.txt" },
-    { path = "essays/essay05.txt", url="essays/essay05.txt", title="essay05.txt" },
-    { path = "essays/essay06.txt", url="essays/essay06.txt", title="essay06.txt" },
-    { path = "essays/essay07.txt", url="essays/essay07.txt", title="essay07.txt" },
-    { path = "essays/essay08.txt", url="essays/essay08.txt", title="essay08.txt" },
-    { path = "essays/essay09.txt", url="essays/essay09.txt", title="essay09.txt" },
-    { path = "essays/essay10.txt", url="essays/essay10.txt", title="essay10.txt" },
-    { path = "essays/essay11.txt", url="essays/essay11.txt", title="essay11.txt" },
-    { path = "essays/essay12.txt", url="essays/essay12.txt", title="essay12.txt" },
-    { path = "essays/essay13.txt", url="essays/essay13.txt", title="essay13.txt" },
-    { path = "essays/essay14.txt", url="essays/essay14.txt", title="essay14.txt" },
-    { path = "essays/essay15.txt", url="essays/essay15.txt", title="essay15.txt" },
-    { path = "essays/essay16.txt", url="essays/essay16.txt", title="essay16.txt" },
-    { path = "essays/essay17.txt", url="essays/essay17.txt", title="essay17.txt" },
-    { path = "essays/essay18.txt", url="essays/essay18.txt", title="essay18.txt" },
-    { path = "essays/essay19.txt", url="essays/essay19.txt", title="essay19.txt" },
-    { path = "essays/essay20.txt", url="essays/essay20.txt", title="essay20.txt" },
+    { path = "essays/essay01.txt", url="../essays/essay01.txt", title = "Introduction"},
+    { path = "essays/essay02.txt", url="../essays/essay02.txt", title = "Concerning Dangers from Foreign Force and Influence"},
+    { path = "essays/essay03.txt", url="../essays/essay03.txt", title = "Concerning Dangers from Foreign Force and Influence 2"},
+    { path = "essays/essay04.txt", url="../essays/essay04.txt", title = "Concerning Dangers from Foreign Force and Influence 3"},
+    { path = "essays/essay05.txt", url="../essays/essay05.txt", title = "Concerning Dangers from Foreign Force and Influence 4"},
+    { path = "essays/essay06.txt", url="../essays/essay06.txt", title = "Concerning Dangers from Dissensions Between the States"},
+    { path = "essays/essay07.txt", url="../essays/essay07.txt", title = "Concerning Dangers from Dissensions Between the States 2"},
+    { path = "essays/essay08.txt", url="../essays/essay08.txt", title = "The Consequences of Hostilities Between the States"},
+    { path = "essays/essay09.txt", url="../essays/essay09.txt", title = "The Union as a Safeguard Against Domestic Faction and Insurrection"},
+    { path = "essays/essay10.txt", url="../essays/essay10.txt", title = "The Union as a Safeguard Against Domestic Faction and Insurrection 2"}
 ]
 
 [output]

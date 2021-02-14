@@ -31,6 +31,10 @@ class Crane {
     return new Uint8Array(body);
   }
   query(searchTerm) {
+    if (window._craneQuery === undefined) {
+      console.warn("query: called before Crane has loaded");
+      return [];
+    }
     return _craneQuery(searchTerm);
   }
   async load() {
