@@ -1,7 +1,5 @@
 dist/crane.wasm
 dist/federalist.crane
-demo/crane.wasm
-demo/federalist.crane
 
 # Binaries for programs and plugins
 *.exe

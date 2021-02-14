@@ -1,5 +1,7 @@
 # Crane Search
 
+Crane Search is
+
 ```bash
 ./build-index.sh federalist.toml
 ./build-search.sh

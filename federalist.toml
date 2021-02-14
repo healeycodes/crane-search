@@ -1,16 +1,16 @@
 [input]
-base_directory = "test/essays"
+base_directory = "this/field/isnt/used/yet"
 files = [
-    { path = "essays/essay01.txt", url="../essays/essay01.txt", title = "Introduction"},
-    { path = "essays/essay02.txt", url="../essays/essay02.txt", title = "Concerning Dangers from Foreign Force and Influence"},
-    { path = "essays/essay03.txt", url="../essays/essay03.txt", title = "Concerning Dangers from Foreign Force and Influence 2"},
-    { path = "essays/essay04.txt", url="../essays/essay04.txt", title = "Concerning Dangers from Foreign Force and Influence 3"},
-    { path = "essays/essay05.txt", url="../essays/essay05.txt", title = "Concerning Dangers from Foreign Force and Influence 4"},
-    { path = "essays/essay06.txt", url="../essays/essay06.txt", title = "Concerning Dangers from Dissensions Between the States"},
-    { path = "essays/essay07.txt", url="../essays/essay07.txt", title = "Concerning Dangers from Dissensions Between the States 2"},
-    { path = "essays/essay08.txt", url="../essays/essay08.txt", title = "The Consequences of Hostilities Between the States"},
-    { path = "essays/essay09.txt", url="../essays/essay09.txt", title = "The Union as a Safeguard Against Domestic Faction and Insurrection"},
-    { path = "essays/essay10.txt", url="../essays/essay10.txt", title = "The Union as a Safeguard Against Domestic Faction and Insurrection 2"}
+    { path = "docs/essays/essay01.txt", url="essays/essay01.txt", title = "Introduction"},
+    { path = "docs/essays/essay02.txt", url="essays/essay02.txt", title = "Concerning Dangers from Foreign Force and Influence"},
+    { path = "docs/essays/essay03.txt", url="essays/essay03.txt", title = "Concerning Dangers from Foreign Force and Influence 2"},
+    { path = "docs/essays/essay04.txt", url="essays/essay04.txt", title = "Concerning Dangers from Foreign Force and Influence 3"},
+    { path = "docs/essays/essay05.txt", url="essays/essay05.txt", title = "Concerning Dangers from Foreign Force and Influence 4"},
+    { path = "docs/essays/essay06.txt", url="essays/essay06.txt", title = "Concerning Dangers from Dissensions Between the States"},
+    { path = "docs/essays/essay07.txt", url="essays/essay07.txt", title = "Concerning Dangers from Dissensions Between the States 2"},
+    { path = "docs/essays/essay08.txt", url="essays/essay08.txt", title = "The Consequences of Hostilities Between the States"},
+    { path = "docs/essays/essay09.txt", url="essays/essay09.txt", title = "The Union as a Safeguard Against Domestic Faction and Insurrection"},
+    { path = "docs/essays/essay10.txt", url="essays/essay10.txt", title = "The Union as a Safeguard Against Domestic Faction and Insurrection 2"}
 ]
 
 [output]
