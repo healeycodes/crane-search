@@ -26,17 +26,20 @@ class Crane {
       }
     });
   }
-  async loadStore(storePath) {
+  async loadResource(storePath) {
     const body = await fetch(storePath).then((res) => res.arrayBuffer());
     return new Uint8Array(body);
   }
-  search(searchTerm) {
-    return _craneSearch(searchTerm);
+  query(searchTerm) {
+    return _craneQuery(searchTerm);
   }
   async load() {
-    const store = await this.loadStore(this.storePath);
-    console.log(store);
-    return await this.loadWasm(this.wasmPath, store);
+    try {
+      const store = await this.loadResource(this.storePath);
+      return await this.loadWasm(this.wasmPath, store);
+    } catch (error) {
+      console.error(`load: ${error}`);
+    }
   }
   constructor(wasmPath, storePath) {
     this.wasmPath = wasmPath;

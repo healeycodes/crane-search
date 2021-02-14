@@ -12,6 +12,20 @@ import (
 	search "github.com/healeycodes/crane-search"
 )
 
+type config struct {
+	Input  inputInfo
+	Output outputInfo
+}
+
+type inputInfo struct {
+	BaseDir string `toml:"base_directory"`
+	Files   []map[string]string
+}
+
+type outputInfo struct {
+	Filename string
+}
+
 func main() {
 	build()
 }
@@ -83,20 +97,6 @@ func loadDocuments(config config) ([]search.Document, error) {
 	}
 
 	return docs, nil
-}
-
-type config struct {
-	Input  inputInfo
-	Output outputInfo
-}
-
-type inputInfo struct {
-	BaseDir string `toml:"base_directory"`
-	Files   []map[string]string
-}
-
-type outputInfo struct {
-	Filename string
 }
 
 func removeIfExists(path string) {
