@@ -1,5 +1,4 @@
 [input]
-base_directory = "this/field/isnt/used/yet"
 files = [
     { path = "docs/essays/essay01.txt", url="essays/essay01.txt", title = "Introduction"},
     { path = "docs/essays/essay02.txt", url="essays/essay02.txt", title = "Concerning Dangers from Foreign Force and Influence"},

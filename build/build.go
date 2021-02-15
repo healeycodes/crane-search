@@ -18,8 +18,7 @@ type config struct {
 }
 
 type inputInfo struct {
-	BaseDir string `toml:"base_directory"`
-	Files   []map[string]string
+	Files []map[string]string
 }
 
 type outputInfo struct {
@@ -79,7 +78,8 @@ func build() {
 		Index:   index,
 		Results: results,
 	}
-	encoder.Encode(store)
+	err = encoder.Encode(store)
+	check(err)
 }
 
 // Given a config, load the items and their metadata.
