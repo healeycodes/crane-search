@@ -36,7 +36,7 @@ Pass the configuration file to the build script. You'll want a fresh index whene
 ./build-search.sh
 ```
 
-Copy the files from `/dist` to your website. And away you go!
+Host the files from `/dist` on your website. And away you go!
 
 ```javascript
 const crane = new Crane("crane.wasm", "federalist.crane");
