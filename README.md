@@ -12,6 +12,8 @@ Crane is two programs. The first program scans a group of documents and builds a
 
 [![Crane instant search in action](https://github.com/healeycodes/crane-search/blob/main/docs/crane.gif)](https://healeycodes.github.io/crane-search/)
 
+<br>
+
 The full text search engine is powered in part with code from Artem Krylysov's blog post [Let's build a Full-Text Search engine](https://artem.krylysov.com/blog/2020/07/28/lets-build-a-full-text-search-engine/).
 
 ## Use it
