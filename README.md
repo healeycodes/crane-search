@@ -6,7 +6,11 @@ I wrote it to help me understand how WebAssembly search tools work. Please use S
 
 Crane is two programs. The first program scans a group of documents and builds an efficient index. 1MB of text and metadata is turned into a 25KB index (14KB gzipped). The second program is a Wasm module that is sent to the browser along with a little bit of JavaScript glue code and the index. The result is an instant search engine that helps users find web pages as they type.
 
-![Crane instant search in action](https://github.com/healeycodes/crane-search/blob/main/docs/crane.gif)
+[Visit the demo](https://healeycodes.github.io/crane-search/)
+
+<br>
+
+[![Crane instant search in action](https://github.com/healeycodes/crane-search/blob/main/docs/crane.gif)](https://healeycodes.github.io/crane-search/)
 
 The full text search engine is powered in part with code from Artem Krylysov's blog post [Let's build a Full-Text Search engine](https://artem.krylysov.com/blog/2020/07/28/lets-build-a-full-text-search-engine/).
 
