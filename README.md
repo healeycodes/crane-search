@@ -12,7 +12,7 @@ The full text search engine is powered in part with code from Artem Krylysov's b
 
 ## Use it
 
-Add your document files and their metadata.
+Describe your document files and their metadata.
 
 ```toml
 [input]
