@@ -1,5 +1,5 @@
 // Uses code from Simple Full-Text Search engine
-// Copied/Modified from https://github.com/akrylysov/simplefts
+// Copied/Modified from https://artem.krylysov.com/blog/2020/07/28/lets-build-a-full-text-search-engine/
 // LICENSE: https://github.com/akrylysov/simplefts/blob/master/LICENSE
 
 package search

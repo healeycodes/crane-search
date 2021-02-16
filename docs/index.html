@@ -13,8 +13,23 @@
     <script src="crane.js"></script>
   </head>
   <body>
+    <h1>Crane 🐦</h1>
+    <p>
+      <a href="https://github.com/healeycodes/crane-search">Crane</a> is a
+      technical demo is inspired by
+      <a href="https://github.com/jameslittle230/stork">Stork</a>.
+    </p>
+    <p>
+      Crane is two programs. The first program scans a group of documents and
+      builds an efficient index. 1MB of text and metadata is turned into a 25KB
+      index (14KB gzipped). The second program is a Wasm module that is sent to
+      the browser along with a little bit of JavaScript glue code and the index.
+      The result is an instant search engine that helps users find web pages as
+      they type.
+    </p>
+    <p>👇</p>
     <div>
-      <input id="crane-search" placeholder="home anne" onInput="search(this)" />
+      <input id="crane-search" placeholder="america" onInput="search(this)" />
       <progress id="crane-load-progress" max="100" value="0"></progress>
     </div>
     <div id="crane-results"></div>
