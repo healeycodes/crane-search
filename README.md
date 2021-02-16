@@ -46,7 +46,7 @@ Host the files from `/dist` on your website. And away you go!
 
 ```javascript
 const crane = new Crane("crane.wasm", "federalist.crane");
-await crane.load()
+await crane.load();
 
 const results = crane.query('some keywords');
 console.log(results);
