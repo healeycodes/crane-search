@@ -2,7 +2,7 @@
 
 Crane is a technical demo is inspired by [Stork](https://github.com/jameslittle230/stork) and uses a near-identical configuration file setup. So it had to be named after a bird too.
 
-I wrote it to help me understand how WebAssembly search tools work.
+I wrote it to help me understand how WebAssembly search tools work. Please use Stork instead.
 
 Crane is two programs. The first program scans a group of documents and builds an efficient index. 1MB of text and metadata is turned into a 25KB index (14KB gzipped). The second program is a Wasm module that is sent to the browser along with a little bit of JavaScript glue code and the index. The result is an instant search engine that helps users find web pages as they type.
 
@@ -12,7 +12,7 @@ The full text search engine is powered in part with code from Artem Krylysov's b
 
 ## Use it
 
-Add your document files and their metadata.
+Describe your document files and their metadata.
 
 ```toml
 [input]
@@ -36,7 +36,7 @@ Pass the configuration file to the build script. You'll want a fresh index whene
 ./build-search.sh
 ```
 
-Copy the files from `/dist` to your website. And away you go!
+Host the files from `/dist` on your website. And away you go!
 
 ```javascript
 const crane = new Crane("crane.wasm", "federalist.crane");
