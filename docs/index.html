@@ -45,6 +45,10 @@
           details += `<li><a href="${result.url}">${result.title}</a></li>`;
         });
         craneResults.innerHTML = details + "</ol>";
+
+        // Scroll so mobile can see the results for the demo
+        const scrollingElement = document.scrollingElement || document.body;
+        scrollingElement.scrollTop = scrollingElement.scrollHeight;
       }
 
       const progress = setInterval(() => {
