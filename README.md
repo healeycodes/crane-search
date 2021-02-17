@@ -16,6 +16,8 @@ Crane is two programs. The first program scans a group of documents and builds a
 
 The full text search engine is powered in part with code from Artem Krylysov's blog post [Let's build a Full-Text Search engine](https://artem.krylysov.com/blog/2020/07/28/lets-build-a-full-text-search-engine/).
 
+No effort has been made to shrink the Wasm binary. See [Reducing the size of Wasm files](https://github.com/golang/go/wiki/WebAssembly#reducing-the-size-of-wasm-files).
+
 ## Use it
 
 Describe your document files and their metadata.
