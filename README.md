@@ -1,5 +1,9 @@
 # Crane 🐦
 
+> My blog post: [WebAssembly Search Tools for Static Sites](https://healeycodes.com/boids-flocking-simulation/)
+
+<br>
+
 Crane is a technical demo is inspired by [Stork](https://github.com/jameslittle230/stork) and uses a near-identical configuration file setup. So it had to be named after a bird too.
 
 I wrote it to help me understand how WebAssembly search tools work. Please use Stork instead.
