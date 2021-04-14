@@ -1,6 +1,6 @@
 # Crane 🐦
 
-> My blog post: [WebAssembly Search Tools for Static Sites](https://healeycodes.com/boids-flocking-simulation/)
+> My blog post: [WebAssembly Search Tools for Static Sites](https://healeycodes.com/webassembly-search-tools-for-static-websites/)
 
 <br>
 
